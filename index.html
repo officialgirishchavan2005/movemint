@@ -1,0 +1,1157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MOVEMINT — Moving Day, Without the Chaos (Fictional Relocation Demo)</title>
+  <meta name="description" content="MOVEMINT is a fictional modern relocation brand featuring an interactive, transparent moving cost estimator. Built with HTML5, CSS3, and Vanilla JavaScript.">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="assets/icons/movemint-mark.svg">
+
+  <!-- Google Fonts: Syne (Bold Display), Plus Jakarta Sans (Body), JetBrains Mono (Estimator Math) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <!-- Demo Notice Strip -->
+  <div class="demo-ribbon" role="note" aria-label="Fictional demo notice">
+    <div class="container demo-ribbon__inner">
+      <span class="demo-ribbon__badge">FICTIONAL DEMO</span>
+      <p class="demo-ribbon__text">
+        MOVEMINT is a fictional relocation concept. Estimates are illustrative only — no real bookings or payments.
+      </p>
+    </div>
+  </div>
+
+  <!-- 1. Navigation -->
+  <header class="site-header" id="top">
+    <div class="container header-inner">
+      <a href="#top" class="brand-logo" aria-label="MOVEMINT Home">
+        <img src="assets/icons/movemint-mark.svg" alt="" width="40" height="40" class="brand-logo__mark">
+        <span class="brand-logo__text">MOVE<span>MINT</span></span>
+      </a>
+
+      <nav class="primary-nav" aria-label="Primary Navigation">
+        <ul class="nav-list">
+          <li><a href="#services" class="nav-link">Services</a></li>
+          <li><a href="#estimate" class="nav-link">Estimate</a></li>
+          <li><a href="#process" class="nav-link">Process</a></li>
+          <li><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <a href="#estimate" class="btn btn--lime btn--sm header-cta">Calculate My Move</a>
+        <button
+          type="button"
+          class="menu-toggle"
+          id="menuToggle"
+          aria-expanded="false"
+          aria-controls="mobileNav"
+          aria-label="Open navigation menu"
+        >
+          <span class="menu-toggle__bar"></span>
+          <span class="menu-toggle__bar"></span>
+          <span class="menu-toggle__bar"></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Navigation Drawer -->
+    <div class="mobile-nav" id="mobileNav" hidden>
+      <nav aria-label="Mobile Navigation">
+        <ul class="mobile-nav__list">
+          <li><a href="#services" class="mobile-nav__link">Services</a></li>
+          <li><a href="#estimate" class="mobile-nav__link">Estimate</a></li>
+          <li><a href="#process" class="mobile-nav__link">Process</a></li>
+          <li><a href="#contact" class="mobile-nav__link">Contact</a></li>
+          <li><a href="#estimate" class="btn btn--lime btn--full">Calculate My Move</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <!-- 2. Hero Section -->
+    <section class="hero" aria-labelledby="hero-heading">
+      <div class="container hero-grid">
+        <div class="hero-content reveal">
+          <div class="eyebrow-pill">
+            <span class="eyebrow-dot" aria-hidden="true"></span>
+            <span>Fresh-Start Relocation • Transparent Estimator</span>
+          </div>
+
+          <h1 id="hero-heading" class="hero-title">
+            Moving Day, <br>
+            <span class="highlight-stroke">Without the Chaos.</span>
+          </h1>
+
+          <p class="hero-subtitle">
+            From studio flats to full family homes and nimble offices, MOVEMINT pairs upbeat packing crews with color-coded crates and crystal-clear illustrative cost math before you lift a finger.
+          </p>
+
+          <div class="hero-actions">
+            <a href="#estimate" class="btn btn--lime btn--lg">
+              <span>Calculate My Move</span>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M5 12H19M19 12L13 6M19 12L13 18" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+            <a href="#process" class="btn btn--ghost btn--lg">See Our Process</a>
+          </div>
+
+          <dl class="hero-metrics">
+            <div class="hero-metric">
+              <dt>Pricing Model</dt>
+              <dd>100% Open Formula</dd>
+            </div>
+            <div class="hero-metric">
+              <dt>Crate System</dt>
+              <dd>Color-Tagged</dd>
+            </div>
+            <div class="hero-metric">
+              <dt>Demo Status</dt>
+              <dd>Illustrative Only</dd>
+            </div>
+          </dl>
+        </div>
+
+        <div class="hero-visual reveal">
+          <div class="hero-art-card">
+            <div class="hero-sticker hero-sticker--top" aria-hidden="true">
+              <span>ZERO</span>
+              <strong>CHAOS</strong>
+            </div>
+
+            <img
+              src="assets/illustrations/hero-boxes.svg"
+              alt="Artistic illustration of stacked cardboard moving boxes with lime green tape, a potted plant, desk lamp, and fragile labels"
+              class="hero-illustration"
+              width="560"
+              height="480"
+            >
+
+            <div class="hero-sticker hero-sticker--bottom">
+              <span class="mono-label">LIVE ESTIMATOR</span>
+              <span class="sticker-value">5 Quick Steps</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. Interactive Moving Cost Estimator -->
+    <section class="section estimator-section" id="estimate" aria-labelledby="estimator-heading">
+      <div class="container">
+        <div class="section-head section-head--asymmetric reveal">
+          <div>
+            <span class="section-tag">Interactive Cost Estimator</span>
+            <h2 id="estimator-heading" class="section-title">Build Your Illustrative Move Estimate</h2>
+          </div>
+          <p class="section-lead">
+            Adjust home size, distance, furniture items, and packing add-ons to see our transparent formula calculate in real time. All figures are illustrative demo estimates, not binding quotations.
+          </p>
+        </div>
+
+        <!-- Progress Indicator -->
+        <div class="estimator-progress-wrap reveal" aria-label="Estimator Progress">
+          <div class="progress-track" aria-hidden="true">
+            <div class="progress-track__fill" id="progressBarFill" style="width: 20%;"></div>
+          </div>
+          <ol class="step-pills" id="stepPills" role="list">
+            <li>
+              <button type="button" class="step-pill is-active" data-step-target="1" aria-current="step">
+                <span class="step-pill__num">01</span>
+                <span class="step-pill__label">Home Type</span>
+              </button>
+            </li>
+            <li>
+              <button type="button" class="step-pill" data-step-target="2">
+                <span class="step-pill__num">02</span>
+                <span class="step-pill__label">Distance</span>
+              </button>
+            </li>
+            <li>
+              <button type="button" class="step-pill" data-step-target="3">
+                <span class="step-pill__num">03</span>
+                <span class="step-pill__label">Items</span>
+              </button>
+            </li>
+            <li>
+              <button type="button" class="step-pill" data-step-target="4">
+                <span class="step-pill__num">04</span>
+                <span class="step-pill__label">Extras</span>
+              </button>
+            </li>
+            <li>
+              <button type="button" class="step-pill" data-step-target="5">
+                <span class="step-pill__num">05</span>
+                <span class="step-pill__label">Date &amp; Info</span>
+              </button>
+            </li>
+          </ol>
+        </div>
+
+        <!-- Asymmetric Estimator Layout: Wizard Left + Sticky Live Receipt Right -->
+        <div class="estimator-layout">
+          <!-- Left: Multi-step Wizard -->
+          <div class="wizard-card" id="wizardCard">
+            <form id="estimatorForm" novalidate>
+              <!-- STEP 1: Current Home Type -->
+              <fieldset class="wizard-step is-active" data-step="1">
+                <legend class="step-legend">
+                  <span class="step-kicker">Step 01 of 05</span>
+                  <span class="step-heading">What is your current home type?</span>
+                </legend>
+                <p class="step-help">Select a base home size to set the crew &amp; truck baseline.</p>
+
+                <div class="option-grid option-grid--homes" role="radiogroup" aria-label="Current home type">
+                  <label class="select-card">
+                    <input type="radio" name="homeType" value="studio" checked>
+                    <span class="select-card__body">
+                      <span class="select-card__top">
+                        <span class="select-card__icon" aria-hidden="true">
+                          <svg viewBox="0 0 32 32" fill="none"><rect x="6" y="10" width="20" height="16" rx="3" stroke="currentColor" stroke-width="2.2"/><path d="M4 12L16 4L28 12" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>
+                        </span>
+                        <span class="select-card__price">$180</span>
+                      </span>
+                      <strong class="select-card__title">Studio</strong>
+                      <span class="select-card__meta">Compact living • 2-mover baseline</span>
+                    </span>
+                  </label>
+
+                  <label class="select-card">
+                    <input type="radio" name="homeType" value="1br">
+                    <span class="select-card__body">
+                      <span class="select-card__top">
+                        <span class="select-card__icon" aria-hidden="true">
+                          <svg viewBox="0 0 32 32" fill="none"><rect x="5" y="11" width="22" height="15" rx="3" stroke="currentColor" stroke-width="2.2"/><path d="M16 11V26" stroke="currentColor" stroke-width="2"/><path d="M3 13L16 5L29 13" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>
+                        </span>
+                        <span class="select-card__price">$260</span>
+                      </span>
+                      <strong class="select-card__title">1 Bedroom</strong>
+                      <span class="select-card__meta">Apartment • Standard van</span>
+                    </span>
+                  </label>
+
+                  <label class="select-card">
+                    <input type="radio" name="homeType" value="2br">
+                    <span class="select-card__body">
+                      <span class="select-card__top">
+                        <span class="select-card__icon" aria-hidden="true">
+                          <svg viewBox="0 0 32 32" fill="none"><rect x="4" y="12" width="24" height="15" rx="3" stroke="currentColor" stroke-width="2.2"/><rect x="9" y="16" width="5" height="5" rx="1" fill="currentColor"/><rect x="18" y="16" width="5" height="5" rx="1" fill="currentColor"/><path d="M2 14L16 4L30 14" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>
+                        </span>
+                        <span class="select-card__price">$380</span>
+                      </span>
+                      <strong class="select-card__title">2 Bedrooms</strong>
+                      <span class="select-card__meta">Mid-size flat • 3-mover crew</span>
+                    </span>
+                  </label>
+
+                  <label class="select-card">
+                    <input type="radio" name="homeType" value="3br">
+                    <span class="select-card__body">
+                      <span class="select-card__top">
+                        <span class="select-card__icon" aria-hidden="true">
+                          <svg viewBox="0 0 32 32" fill="none"><path d="M4 27V12L16 4L28 12V27H4Z" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/><rect x="12" y="17" width="8" height="10" rx="1.5" stroke="currentColor" stroke-width="2"/></svg>
+                        </span>
+                        <span class="select-card__price">$520</span>
+                      </span>
+                      <strong class="select-card__title">3 Bedrooms</strong>
+                      <span class="select-card__meta">Family home • Full box truck</span>
+                    </span>
+                  </label>
+
+                  <label class="select-card select-card--wide">
+                    <input type="radio" name="homeType" value="large_house">
+                    <span class="select-card__body">
+                      <span class="select-card__top">
+                        <span class="select-card__icon" aria-hidden="true">
+                          <svg viewBox="0 0 32 32" fill="none"><path d="M3 27V14L12 7L21 14V27H3Z" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/><path d="M21 17H29V27H21" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/><rect x="8" y="18" width="6" height="9" rx="1" stroke="currentColor" stroke-width="2"/></svg>
+                        </span>
+                        <span class="select-card__price">$740</span>
+                      </span>
+                      <strong class="select-card__title">Large House</strong>
+                      <span class="select-card__meta">4+ rooms / multi-floor • Dedicated 4+ crew &amp; heavy truck</span>
+                    </span>
+                  </label>
+                </div>
+              </fieldset>
+
+              <!-- STEP 2: Moving Distance -->
+              <fieldset class="wizard-step" data-step="2" hidden>
+                <legend class="step-legend">
+                  <span class="step-kicker">Step 02 of 05</span>
+                  <span class="step-heading">How far are you relocating?</span>
+                </legend>
+                <p class="step-help">Choose the approximate road distance between origin and destination.</p>
+
+                <div class="option-grid option-grid--distances" role="radiogroup" aria-label="Moving distance">
+                  <label class="select-card">
+                    <input type="radio" name="distance" value="under_5" checked>
+                    <span class="select-card__body">
+                      <span class="select-card__top">
+                        <span class="distance-pill">Local Hop</span>
+                        <span class="select-card__price">+$45</span>
+                      </span>
+                      <strong class="select-card__title">Under 5 km</strong>
+                      <span class="select-card__meta">Same neighborhood or adjacent block</span>
+                    </span>
+                  </label>
+
+                  <label class="select-card">
+                    <input type="radio" name="distance" value="5_15">
+                    <span class="select-card__body">
+                      <span class="select-card__top">
+                        <span class="distance-pill">Across Town</span>
+                        <span class="select-card__price">+$95</span>
+                      </span>
+                      <strong class="select-card__title">5–15 km</strong>
+                      <span class="select-card__meta">Cross-district urban route</span>
+                    </span>
+                  </label>
+
+                  <label class="select-card">
+                    <input type="radio" name="distance" value="15_30">
+                    <span class="select-card__body">
+                      <span class="select-card__top">
+                        <span class="distance-pill">Metro Zone</span>
+                        <span class="select-card__price">+$165</span>
+                      </span>
+                      <strong class="select-card__title">15–30 km</strong>
+                      <span class="select-card__meta">Outer suburbs &amp; beltway transit</span>
+                    </span>
+                  </label>
+
+                  <label class="select-card">
+                    <input type="radio" name="distance" value="above_30">
+                    <span class="select-card__body">
+                      <span class="select-card__top">
+                        <span class="distance-pill">Regional</span>
+                        <span class="select-card__price">+$260</span>
+                      </span>
+                      <strong class="select-card__title">Above 30 km</strong>
+                      <span class="select-card__meta">Extended highway dispatch</span>
+                    </span>
+                  </label>
+                </div>
+              </fieldset>
+
+              <!-- STEP 3: Select Items -->
+              <fieldset class="wizard-step" data-step="3" hidden>
+                <legend class="step-legend">
+                  <span class="step-kicker">Step 03 of 05</span>
+                  <span class="step-heading">Select items &amp; quantities</span>
+                </legend>
+                <div class="items-toolbar">
+                  <p class="step-help">Adjust quantities with the controls below. Every change updates your total immediately.</p>
+                  <div class="items-toolbar__actions">
+                    <button type="button" class="btn-chip" id="prefillTypicalBtn">Auto-fill typical items</button>
+                    <button type="button" class="btn-chip btn-chip--muted" id="clearItemsBtn">Reset to 0</button>
+                  </div>
+                </div>
+
+                <div class="items-list" id="itemsList">
+                  <!-- Populated cleanly via HTML for zero-flash + enhanced by JS -->
+                  <div class="item-row" data-item-id="sofa">
+                    <div class="item-row__info">
+                      <span class="item-row__icon" aria-hidden="true">
+                        <svg viewBox="0 0 32 32" fill="none"><path d="M5 17V12C5 10.343 6.343 9 8 9H24C25.657 9 27 10.343 27 12V17" stroke="currentColor" stroke-width="2.2"/><rect x="3" y="15" width="26" height="8" rx="3" fill="#FAF6EE" stroke="currentColor" stroke-width="2.2"/><path d="M7 23V26M25 23V26" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>
+                      </span>
+                      <div>
+                        <strong class="item-row__name">Sofa</strong>
+                        <span class="item-row__rate">$35 / unit</span>
+                      </div>
+                    </div>
+                    <div class="qty-control">
+                      <button type="button" class="qty-btn" data-action="decrement" data-item="sofa" aria-label="Decrease Sofa quantity">−</button>
+                      <input type="number" class="qty-input" id="qty-sofa" name="item_sofa" min="0" max="30" value="1" aria-label="Sofa quantity">
+                      <button type="button" class="qty-btn" data-action="increment" data-item="sofa" aria-label="Increase Sofa quantity">+</button>
+                    </div>
+                  </div>
+
+                  <div class="item-row" data-item-id="bed">
+                    <div class="item-row__info">
+                      <span class="item-row__icon" aria-hidden="true">
+                        <svg viewBox="0 0 32 32" fill="none"><path d="M4 23V11M28 23V16C28 14.343 26.657 13 25 13H12V18H4" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><rect x="6" y="11" width="5" height="4" rx="1.5" stroke="currentColor" stroke-width="2"/><path d="M4 19H28" stroke="currentColor" stroke-width="2.2"/></svg>
+                      </span>
+                      <div>
+                        <strong class="item-row__name">Bed</strong>
+                        <span class="item-row__rate">$40 / unit</span>
+                      </div>
+                    </div>
+                    <div class="qty-control">
+                      <button type="button" class="qty-btn" data-action="decrement" data-item="bed" aria-label="Decrease Bed quantity">−</button>
+                      <input type="number" class="qty-input" id="qty-bed" name="item_bed" min="0" max="30" value="1" aria-label="Bed quantity">
+                      <button type="button" class="qty-btn" data-action="increment" data-item="bed" aria-label="Increase Bed quantity">+</button>
+                    </div>
+                  </div>
+
+                  <div class="item-row" data-item-id="wardrobe">
+                    <div class="item-row__info">
+                      <span class="item-row__icon" aria-hidden="true">
+                        <svg viewBox="0 0 32 32" fill="none"><rect x="6" y="5" width="20" height="22" rx="2.5" stroke="currentColor" stroke-width="2.2"/><path d="M16 5V27" stroke="currentColor" stroke-width="2"/><circle cx="13" cy="16" r="1.2" fill="currentColor"/><circle cx="19" cy="16" r="1.2" fill="currentColor"/></svg>
+                      </span>
+                      <div>
+                        <strong class="item-row__name">Wardrobe</strong>
+                        <span class="item-row__rate">$45 / unit</span>
+                      </div>
+                    </div>
+                    <div class="qty-control">
+                      <button type="button" class="qty-btn" data-action="decrement" data-item="wardrobe" aria-label="Decrease Wardrobe quantity">−</button>
+                      <input type="number" class="qty-input" id="qty-wardrobe" name="item_wardrobe" min="0" max="30" value="0" aria-label="Wardrobe quantity">
+                      <button type="button" class="qty-btn" data-action="increment" data-item="wardrobe" aria-label="Increase Wardrobe quantity">+</button>
+                    </div>
+                  </div>
+
+                  <div class="item-row" data-item-id="refrigerator">
+                    <div class="item-row__info">
+                      <span class="item-row__icon" aria-hidden="true">
+                        <svg viewBox="0 0 32 32" fill="none"><rect x="8" y="4" width="16" height="24" rx="3" stroke="currentColor" stroke-width="2.2"/><path d="M8 13H24" stroke="currentColor" stroke-width="2.2"/><path d="M12 8V10M12 16V20" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>
+                      </span>
+                      <div>
+                        <strong class="item-row__name">Refrigerator</strong>
+                        <span class="item-row__rate">$50 / unit</span>
+                      </div>
+                    </div>
+                    <div class="qty-control">
+                      <button type="button" class="qty-btn" data-action="decrement" data-item="refrigerator" aria-label="Decrease Refrigerator quantity">−</button>
+                      <input type="number" class="qty-input" id="qty-refrigerator" name="item_refrigerator" min="0" max="15" value="1" aria-label="Refrigerator quantity">
+                      <button type="button" class="qty-btn" data-action="increment" data-item="refrigerator" aria-label="Increase Refrigerator quantity">+</button>
+                    </div>
+                  </div>
+
+                  <div class="item-row" data-item-id="washing_machine">
+                    <div class="item-row__info">
+                      <span class="item-row__icon" aria-hidden="true">
+                        <svg viewBox="0 0 32 32" fill="none"><rect x="6" y="4" width="20" height="24" rx="3" stroke="currentColor" stroke-width="2.2"/><path d="M6 10H26" stroke="currentColor" stroke-width="2"/><circle cx="16" cy="18" r="5.5" stroke="currentColor" stroke-width="2.2"/><circle cx="10" cy="7" r="1.2" fill="currentColor"/></svg>
+                      </span>
+                      <div>
+                        <strong class="item-row__name">Washing machine</strong>
+                        <span class="item-row__rate">$40 / unit</span>
+                      </div>
+                    </div>
+                    <div class="qty-control">
+                      <button type="button" class="qty-btn" data-action="decrement" data-item="washing_machine" aria-label="Decrease Washing machine quantity">−</button>
+                      <input type="number" class="qty-input" id="qty-washing_machine" name="item_washing_machine" min="0" max="15" value="0" aria-label="Washing machine quantity">
+                      <button type="button" class="qty-btn" data-action="increment" data-item="washing_machine" aria-label="Increase Washing machine quantity">+</button>
+                    </div>
+                  </div>
+
+                  <div class="item-row" data-item-id="dining_table">
+                    <div class="item-row__info">
+                      <span class="item-row__icon" aria-hidden="true">
+                        <svg viewBox="0 0 32 32" fill="none"><rect x="4" y="10" width="24" height="4" rx="1.5" stroke="currentColor" stroke-width="2.2"/><path d="M8 14V25M24 14V25M12 14V21M20 14V21" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>
+                      </span>
+                      <div>
+                        <strong class="item-row__name">Dining table</strong>
+                        <span class="item-row__rate">$35 / unit</span>
+                      </div>
+                    </div>
+                    <div class="qty-control">
+                      <button type="button" class="qty-btn" data-action="decrement" data-item="dining_table" aria-label="Decrease Dining table quantity">−</button>
+                      <input type="number" class="qty-input" id="qty-dining_table" name="item_dining_table" min="0" max="20" value="0" aria-label="Dining table quantity">
+                      <button type="button" class="qty-btn" data-action="increment" data-item="dining_table" aria-label="Increase Dining table quantity">+</button>
+                    </div>
+                  </div>
+
+                  <div class="item-row" data-item-id="boxes">
+                    <div class="item-row__info">
+                      <span class="item-row__icon" aria-hidden="true">
+                        <svg viewBox="0 0 32 32" fill="none"><rect x="5" y="7" width="22" height="19" rx="2.5" stroke="currentColor" stroke-width="2.2"/><path d="M5 13H27" stroke="currentColor" stroke-width="2"/><rect x="13" y="7" width="6" height="6" fill="#B9F527" stroke="currentColor" stroke-width="1.8"/></svg>
+                      </span>
+                      <div>
+                        <strong class="item-row__name">Boxes</strong>
+                        <span class="item-row__rate">$4 / box</span>
+                      </div>
+                    </div>
+                    <div class="qty-control">
+                      <button type="button" class="qty-btn" data-action="decrement" data-item="boxes" aria-label="Decrease Boxes quantity">−</button>
+                      <input type="number" class="qty-input" id="qty-boxes" name="item_boxes" min="0" max="200" value="8" aria-label="Boxes quantity">
+                      <button type="button" class="qty-btn" data-action="increment" data-item="boxes" aria-label="Increase Boxes quantity">+</button>
+                    </div>
+                  </div>
+                </div>
+              </fieldset>
+
+              <!-- STEP 4: Extra Services -->
+              <fieldset class="wizard-step" data-step="4" hidden>
+                <legend class="step-legend">
+                  <span class="step-kicker">Step 04 of 05</span>
+                  <span class="step-heading">Add optional extra services</span>
+                </legend>
+                <p class="step-help">Toggle any white-glove handling extras you would like included in your estimate.</p>
+
+                <div class="extras-grid">
+                  <label class="extra-card">
+                    <input type="checkbox" name="extras" value="packing_assistance">
+                    <span class="extra-card__body">
+                      <span class="extra-card__header">
+                        <span class="extra-card__check" aria-hidden="true"></span>
+                        <span class="select-card__price">+$110</span>
+                      </span>
+                      <strong class="extra-card__title">Packing assistance</strong>
+                      <span class="extra-card__desc">Mint crates, eco-wrap, and room-by-room boxing before pickup.</span>
+                    </span>
+                  </label>
+
+                  <label class="extra-card">
+                    <input type="checkbox" name="extras" value="furniture_dismantling">
+                    <span class="extra-card__body">
+                      <span class="extra-card__header">
+                        <span class="extra-card__check" aria-hidden="true"></span>
+                        <span class="select-card__price">+$85</span>
+                      </span>
+                      <strong class="extra-card__title">Furniture dismantling</strong>
+                      <span class="extra-card__desc">Careful bed frame, wardrobe &amp; table teardown + reassembly.</span>
+                    </span>
+                  </label>
+
+                  <label class="extra-card">
+                    <input type="checkbox" name="extras" value="fragile_handling">
+                    <span class="extra-card__body">
+                      <span class="extra-card__header">
+                        <span class="extra-card__check" aria-hidden="true"></span>
+                        <span class="select-card__price">+$65</span>
+                      </span>
+                      <strong class="extra-card__title">Fragile item handling</strong>
+                      <span class="extra-card__desc">Double-walled sleeves for mirrors, art, glassware &amp; screens.</span>
+                    </span>
+                  </label>
+
+                  <label class="extra-card">
+                    <input type="checkbox" name="extras" value="unpacking_assistance">
+                    <span class="extra-card__body">
+                      <span class="extra-card__header">
+                        <span class="extra-card__check" aria-hidden="true"></span>
+                        <span class="select-card__price">+$95</span>
+                      </span>
+                      <strong class="extra-card__title">Unpacking assistance</strong>
+                      <span class="extra-card__desc">Box opening, surface placement, and full crate sweep-up.</span>
+                    </span>
+                  </label>
+                </div>
+              </fieldset>
+
+              <!-- STEP 5: Moving Date & Contact Details -->
+              <fieldset class="wizard-step" data-step="5" hidden>
+                <legend class="step-legend">
+                  <span class="step-kicker">Step 05 of 05</span>
+                  <span class="step-heading">Preferred moving date &amp; demo contact details</span>
+                </legend>
+                <p class="step-help">Complete these fields to generate your printable illustrative summary screen. No real booking is created.</p>
+
+                <div class="form-grid">
+                  <div class="form-field">
+                    <label for="moveDate">Preferred moving date <span class="req" aria-hidden="true">*</span></label>
+                    <input type="date" id="moveDate" name="moveDate" required aria-describedby="moveDateError">
+                    <span class="field-error" id="moveDateError" role="alert"></span>
+                  </div>
+
+                  <div class="form-field">
+                    <label for="timeWindow">Preferred window</label>
+                    <select id="timeWindow" name="timeWindow">
+                      <option value="Morning (8:00 AM – 12:00 PM)">Morning (8:00 AM – 12:00 PM)</option>
+                      <option value="Afternoon (12:00 PM – 4:00 PM)">Afternoon (12:00 PM – 4:00 PM)</option>
+                      <option value="Flexible All-Day">Flexible All-Day</option>
+                    </select>
+                  </div>
+
+                  <div class="form-field">
+                    <label for="estName">Full name <span class="req" aria-hidden="true">*</span></label>
+                    <input type="text" id="estName" name="estName" placeholder="e.g. Jordan Rivera" autocomplete="name" required aria-describedby="estNameError">
+                    <span class="field-error" id="estNameError" role="alert"></span>
+                  </div>
+
+                  <div class="form-field">
+                    <label for="estEmail">Email address <span class="req" aria-hidden="true">*</span></label>
+                    <input type="email" id="estEmail" name="estEmail" placeholder="jordan@example.com" autocomplete="email" required aria-describedby="estEmailError">
+                    <span class="field-error" id="estEmailError" role="alert"></span>
+                  </div>
+
+                  <div class="form-field">
+                    <label for="estPhone">Phone number <span class="req" aria-hidden="true">*</span></label>
+                    <input type="tel" id="estPhone" name="estPhone" placeholder="(555) 234-5678" autocomplete="tel" required aria-describedby="estPhoneError">
+                    <span class="field-error" id="estPhoneError" role="alert"></span>
+                  </div>
+
+                  <div class="form-field">
+                    <label for="estRoute">Neighborhoods (optional)</label>
+                    <input type="text" id="estRoute" name="estRoute" placeholder="e.g. Maple District to Riverfront">
+                  </div>
+
+                  <div class="form-field form-field--full">
+                    <label for="estNotes">Access or stair notes (optional)</label>
+                    <textarea id="estNotes" name="estNotes" rows="2" placeholder="Elevator size, parking spot, or special items..."></textarea>
+                  </div>
+
+                  <div class="form-field form-field--full">
+                    <label class="checkbox-consent">
+                      <input type="checkbox" id="estDemoAck" name="estDemoAck" required aria-describedby="estDemoAckError">
+                      <span>I understand this is a fictional demo estimator — totals are illustrative only and no real moving service will be booked.</span>
+                    </label>
+                    <span class="field-error" id="estDemoAckError" role="alert"></span>
+                  </div>
+                </div>
+              </fieldset>
+
+              <!-- Wizard Navigation Controls -->
+              <div class="wizard-nav" id="wizardNav">
+                <button type="button" class="btn btn--ghost" id="prevStepBtn" disabled>
+                  ← Previous
+                </button>
+                <div class="wizard-nav__status mono-label" id="stepCounterText">Step 1 of 5</div>
+                <button type="button" class="btn btn--lime" id="nextStepBtn">
+                  Next Step →
+                </button>
+                <button type="submit" class="btn btn--lime" id="finishEstimateBtn" hidden>
+                  View Summary →
+                </button>
+              </div>
+            </form>
+
+            <!-- Summary Screen (Shown after valid Step 5 submission) -->
+            <div class="summary-screen" id="summaryScreen" hidden aria-live="polite">
+              <div class="summary-banner">
+                <span class="summary-banner__badge">ILLUSTRATIVE DEMO SUMMARY</span>
+                <p>Not a binding quotation. MOVEMINT is a fictional company and no real booking or payment has been made.</p>
+              </div>
+
+              <div class="summary-header">
+                <div>
+                  <span class="step-kicker">Estimate Generated</span>
+                  <h3 class="summary-title">Your Move Snapshot</h3>
+                </div>
+                <div class="summary-total-pill">
+                  <span>Illustrative Total</span>
+                  <strong id="summaryGrandTotal">$0</strong>
+                </div>
+              </div>
+
+              <div class="summary-details-grid" id="summaryDetailsGrid">
+                <!-- Populated dynamically by JS -->
+              </div>
+
+              <div class="summary-breakdown-box">
+                <h4>Itemized Cost Breakdown</h4>
+                <ul class="summary-line-list" id="summaryLineList">
+                  <!-- Populated dynamically by JS -->
+                </ul>
+              </div>
+
+              <div class="summary-actions">
+                <button type="button" class="btn btn--ghost" id="editEstimateBtn">← Edit Details</button>
+                <button type="button" class="btn btn--ghost" id="printSummaryBtn">Print / Save PDF</button>
+                <button type="button" class="btn btn--lime" id="resetEstimateBtn">Start New Estimate</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right: Live Sticky Breakdown Receipt -->
+          <aside class="receipt-card" id="liveReceipt" aria-label="Live Illustrative Estimate Breakdown">
+            <div class="receipt-card__header">
+              <div>
+                <span class="mono-label receipt-kicker">LIVE BREAKDOWN</span>
+                <h3 class="receipt-title">Estimated Move Cost</h3>
+              </div>
+              <span class="illustrative-badge">Illustrative Only</span>
+            </div>
+
+            <div class="receipt-total-block" aria-live="polite" aria-atomic="true">
+              <span class="receipt-total-label">Illustrative Total</span>
+              <strong class="receipt-total-amount" id="liveTotalAmount">$382</strong>
+              <span class="receipt-total-note">Instant calculation • Not a binding quote</span>
+            </div>
+
+            <div class="receipt-breakdown" id="liveBreakdownList">
+              <!-- Populated dynamically on init and every change -->
+            </div>
+
+            <details class="formula-disclosure">
+              <summary>How our transparent formula works</summary>
+              <div class="formula-disclosure__body">
+                <code>Total = Home Base + Distance Fee + Σ(Item Qty × Unit Rate) + Σ(Extras)</code>
+                <ul>
+                  <li><strong>Home Base:</strong> Studio $180 • 1BR $260 • 2BR $380 • 3BR $520 • House $740</li>
+                  <li><strong>Distance:</strong> &lt;5km $45 • 5–15km $95 • 15–30km $165 • 30+km $260</li>
+                  <li><strong>Items:</strong> Sofa $35 • Bed $40 • Wardrobe $45 • Fridge $50 • Washer $40 • Table $35 • Box $4</li>
+                  <li><strong>Extras:</strong> Packing $110 • Dismantling $85 • Fragile $65 • Unpacking $95</li>
+                </ul>
+              </div>
+            </details>
+
+            <p class="receipt-disclaimer">
+              Demo calculator for planning inspiration only. No booking, reservation, or payment occurs on this site.
+            </p>
+          </aside>
+        </div>
+      </div>
+
+      <!-- Mobile Sticky Estimate Bar -->
+      <div class="mobile-estimate-bar" id="mobileEstimateBar">
+        <div class="mobile-estimate-bar__info">
+          <span>Illustrative Total</span>
+          <strong id="mobileTotalAmount">$382</strong>
+        </div>
+        <a href="#liveReceipt" class="btn btn--lime btn--sm">View Breakdown</a>
+      </div>
+    </section>
+
+    <!-- 4. Services Section -->
+    <section class="section services-section" id="services" aria-labelledby="services-heading">
+      <div class="container">
+        <div class="section-head section-head--asymmetric reveal">
+          <div>
+            <span class="section-tag">What We Move</span>
+            <h2 id="services-heading" class="section-title">Tailored Relocation Services</h2>
+          </div>
+          <p class="section-lead">
+            Whether you are crossing two blocks with a studio sofa or shifting thirty workstations over a weekend, every move follows a calm, organized playbook.
+          </p>
+        </div>
+
+        <div class="services-bento">
+          <!-- Featured Wide Card: Home Relocation -->
+          <article class="service-card service-card--featured reveal">
+            <div class="service-card__media">
+              <img src="assets/illustrations/service-home.svg" alt="Illustrated home entrance with stacked moving boxes" width="280" height="180" loading="lazy">
+            </div>
+            <div class="service-card__content">
+              <span class="service-pill">Residential</span>
+              <h3>Home Relocation</h3>
+              <p>
+                Door-to-door apartment, townhouse, and family home moves. Floor runners, door-jamb shields, and color-tagged room placement keep every corner stress-free.
+              </p>
+              <ul class="service-highlights">
+                <li>Studio to 4+ bedroom capacities</li>
+                <li>Elevator &amp; narrow-stair trained crews</li>
+                <li>Reusable mint crates on request</li>
+              </ul>
+              <a href="#estimate" class="text-link preset-trigger" data-preset="2br">Estimate a home move →</a>
+            </div>
+          </article>
+
+          <!-- Card 2: Office Relocation -->
+          <article class="service-card service-card--dark reveal">
+            <div class="service-card__media">
+              <img src="assets/illustrations/service-office.svg" alt="Illustrated rolling cart with packed office monitor and labeled crates" width="280" height="180" loading="lazy">
+            </div>
+            <div class="service-card__content">
+              <span class="service-pill service-pill--lime">Commercial</span>
+              <h3>Office Relocation</h3>
+              <p>
+                Structured workstation, studio, and small-business moves with anti-static screen sleeves, labeled IT crates, and crisp floor-plan drop-offs.
+              </p>
+              <a href="#contact" class="text-link text-link--lime">Send a demo office enquiry →</a>
+            </div>
+          </article>
+
+          <!-- Card 3: Packing & Furniture Handling -->
+          <article class="service-card service-card--lime reveal">
+            <div class="service-card__media">
+              <img src="assets/illustrations/service-packing.svg" alt="Illustrated padded armchair, tape roll, and sealed cardboard box" width="280" height="180" loading="lazy">
+            </div>
+            <div class="service-card__content">
+              <span class="service-pill service-pill--charcoal">White-Glove Care</span>
+              <h3>Packing &amp; Furniture Handling</h3>
+              <p>
+                Full-kitchen wrapping, wardrobe boxes, flat-pack &amp; solid-wood dismantling, plus custom double-layer cushioning for fragile art and mirrors.
+              </p>
+              <a href="#estimate" class="text-link">Add extras in estimator →</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. Moving Process Section -->
+    <section class="section process-section" id="process" aria-labelledby="process-heading">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="section-tag">How It Flows</span>
+          <h2 id="process-heading" class="section-title">Four Calm Steps from Keys to Kettle On</h2>
+        </div>
+
+        <ol class="process-grid">
+          <li class="process-card reveal">
+            <div class="process-card__top">
+              <span class="process-num">01</span>
+              <span class="process-icon" aria-hidden="true">
+                <svg viewBox="0 0 40 40" fill="none"><rect x="6" y="6" width="28" height="28" rx="7" fill="#B9F527" stroke="#1A1B18" stroke-width="2.5"/><path d="M13 15H27M13 21H23M13 27H19" stroke="#1A1B18" stroke-width="2.5" stroke-linecap="round"/></svg>
+              </span>
+            </div>
+            <h3>Plan</h3>
+            <p>Use our open estimator to map home size, key furniture, distance, and your ideal time slot with zero mystery math.</p>
+          </li>
+
+          <li class="process-card process-card--offset reveal">
+            <div class="process-card__top">
+              <span class="process-num">02</span>
+              <span class="process-icon" aria-hidden="true">
+                <svg viewBox="0 0 40 40" fill="none"><rect x="7" y="10" width="26" height="22" rx="4" fill="#E6BC85" stroke="#1A1B18" stroke-width="2.5"/><rect x="16" y="10" width="8" height="10" fill="#B9F527" stroke="#1A1B18" stroke-width="2"/><path d="M12 25H20" stroke="#1A1B18" stroke-width="2.2" stroke-linecap="round"/></svg>
+              </span>
+            </div>
+            <h3>Pack</h3>
+            <p>Color-coded crates and breathable furniture blankets protect every edge, lamp, and heirloom before truck day arrives.</p>
+          </li>
+
+          <li class="process-card reveal">
+            <div class="process-card__top">
+              <span class="process-num">03</span>
+              <span class="process-icon" aria-hidden="true">
+                <svg viewBox="0 0 40 40" fill="none"><rect x="4" y="12" width="21" height="14" rx="3" fill="#FFFDF8" stroke="#1A1B18" stroke-width="2.5"/><path d="M25 16H32L36 21V26H25V16Z" fill="#B9F527" stroke="#1A1B18" stroke-width="2.5" stroke-linejoin="round"/><circle cx="11" cy="28" r="3.5" fill="#1A1B18"/><circle cx="30" cy="28" r="3.5" fill="#1A1B18"/></svg>
+              </span>
+            </div>
+            <h3>Move</h3>
+            <p>Smooth padded loading, cushioned tie-downs, and steady city routing keep everything upright, dry, and right on schedule.</p>
+          </li>
+
+          <li class="process-card process-card--offset reveal">
+            <div class="process-card__top">
+              <span class="process-num">04</span>
+              <span class="process-icon" aria-hidden="true">
+                <svg viewBox="0 0 40 40" fill="none"><path d="M7 21L20 9L33 21V33H7V21Z" fill="#B9F527" stroke="#1A1B18" stroke-width="2.5" stroke-linejoin="round"/><path d="M15 24L18.5 27.5L25.5 20.5" stroke="#1A1B18" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+            </div>
+            <h3>Settle</h3>
+            <p>Beds reassembled, boxes placed in matching rooms, and empty wrapping cleared away so evening starts like home.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- 6. Why MOVEMINT Section -->
+    <section class="section why-section" aria-labelledby="why-heading">
+      <div class="container">
+        <div class="section-head section-head--asymmetric reveal">
+          <div>
+            <span class="section-tag">Why MOVEMINT</span>
+            <h2 id="why-heading" class="section-title">Designed to Take the Edge Off Moving</h2>
+          </div>
+          <p class="section-lead">
+            Every detail — from how we write our pricing formula to how we tape a mirror sleeve — is built around clarity and care.
+          </p>
+        </div>
+
+        <div class="why-bento">
+          <article class="why-card why-card--charcoal why-card--span2 reveal">
+            <span class="why-badge why-badge--lime">Open Math</span>
+            <h3>Zero Mystery Multipliers</h3>
+            <p>
+              See exactly how home base, distance bracket, individual items, and extra services add up before you ever ask for a quote.
+            </p>
+          </article>
+
+          <article class="why-card why-card--lime reveal">
+            <span class="why-badge why-badge--charcoal">Eco Crates</span>
+            <h3>Reusable Mint Crates</h3>
+            <p>Stackable, crush-proof bins mean fewer soggy cardboard piles and faster room sorting.</p>
+          </article>
+
+          <article class="why-card why-card--cream reveal">
+            <span class="why-badge">Color Tags</span>
+            <h3>Room-Matched Labels</h3>
+            <p>Kitchen, Bedroom, and Study boxes land straight in the right room without hallway traffic jams.</p>
+          </article>
+
+          <article class="why-card why-card--cream reveal">
+            <span class="why-badge">Care First</span>
+            <h3>Corner &amp; Floor Armor</h3>
+            <p>Neoprene banister wraps and quilted appliance blankets guard both your old walls and new floors.</p>
+          </article>
+
+          <article class="why-card why-card--charcoal reveal">
+            <span class="why-badge why-badge--lime">Punctual</span>
+            <h3>Crisp Arrival Windows</h3>
+            <p>Clear morning or afternoon windows so you aren’t left sitting on a packed suitcase all day.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. Customer Reviews (Clearly Fictional Demo Reviews) -->
+    <section class="section reviews-section" aria-labelledby="reviews-heading">
+      <div class="container">
+        <div class="section-head section-head--asymmetric reveal">
+          <div>
+            <span class="section-tag">Fictional Demo Reviews</span>
+            <h2 id="reviews-heading" class="section-title">Stories From Imaginary Moves</h2>
+          </div>
+          <div class="demo-disclaimer-chip">
+            <strong>Demo Notice:</strong> The reviews below are fictional sample stories created for this portfolio concept.
+          </div>
+        </div>
+
+        <div class="reviews-grid">
+          <article class="review-card reveal">
+            <div class="review-card__meta">
+              <span class="review-demo-tag">Fictional Demo</span>
+              <span class="review-route">Studio → 1 Bedroom • 8 km</span>
+            </div>
+            <blockquote>
+              “The live item counter matched almost every piece in my apartment. Having the wardrobe dismantled and put back up before dinner felt like magic.”
+            </blockquote>
+            <footer>
+              <div class="reviewer-avatar" aria-hidden="true">MK</div>
+              <div>
+                <strong>Maya Kapoor</strong>
+                <span>Illustrative Customer Story</span>
+              </div>
+            </footer>
+          </article>
+
+          <article class="review-card review-card--stagger reveal">
+            <div class="review-card__meta">
+              <span class="review-demo-tag">Fictional Demo</span>
+              <span class="review-route">2 Bedrooms → 3 Bedrooms • 18 km</span>
+            </div>
+            <blockquote>
+              “Color-coded crates meant our espresso machine and baby gear weren’t buried under winter coats. Zero chaos from 8 AM start to final box.”
+            </blockquote>
+            <footer>
+              <div class="reviewer-avatar reviewer-avatar--lime" aria-hidden="true">LP</div>
+              <div>
+                <strong>Leo &amp; Priya Vance</strong>
+                <span>Illustrative Customer Story</span>
+              </div>
+            </footer>
+          </article>
+
+          <article class="review-card reveal">
+            <div class="review-card__meta">
+              <span class="review-demo-tag">Fictional Demo</span>
+              <span class="review-route">Design Studio Move • 6 km</span>
+            </div>
+            <blockquote>
+              “Twelve desks, monitors, and shelving rolled out Friday afternoon and were ready for Monday standup. Cleanest transition our team has ever had.”
+            </blockquote>
+            <footer>
+              <div class="reviewer-avatar" aria-hidden="true">MT</div>
+              <div>
+                <strong>Marcus Thorne</strong>
+                <span>Illustrative Customer Story</span>
+              </div>
+            </footer>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 8. FAQ Accordion -->
+    <section class="section faq-section" id="faq" aria-labelledby="faq-heading">
+      <div class="container faq-layout">
+        <div class="faq-intro reveal">
+          <span class="section-tag">FAQ</span>
+          <h2 id="faq-heading" class="section-title">Questions, Answered Plainly</h2>
+          <p>
+            Curious about how the illustrative calculator works or what MOVEMINT covers? Expand any question on the right.
+          </p>
+          <div class="faq-note-box">
+            <strong>Reminder:</strong> MOVEMINT is a static front-end showcase. No real trucks, quotes, or payments are processed here.
+          </div>
+        </div>
+
+        <div class="faq-accordion" id="faqAccordion">
+          <div class="faq-item">
+            <h3>
+              <button type="button" class="faq-trigger" aria-expanded="true" aria-controls="faq-panel-1" id="faq-btn-1">
+                <span>Is the cost estimator a binding moving quote?</span>
+                <span class="faq-icon" aria-hidden="true">+</span>
+              </button>
+            </h3>
+            <div class="faq-panel" id="faq-panel-1" role="region" aria-labelledby="faq-btn-1">
+              <div class="faq-panel__inner">
+                <p>No. Every figure produced by the MOVEMINT estimator is strictly illustrative for demonstration purposes. Because MOVEMINT is a fictional company, no binding quotation or real booking is created.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <h3>
+              <button type="button" class="faq-trigger" aria-expanded="false" aria-controls="faq-panel-2" id="faq-btn-2">
+                <span>How does the transparent price formula calculate my total?</span>
+                <span class="faq-icon" aria-hidden="true">+</span>
+              </button>
+            </h3>
+            <div class="faq-panel" id="faq-panel-2" role="region" aria-labelledby="faq-btn-2" hidden>
+              <div class="faq-panel__inner">
+                <p>It adds four transparent parts: a Base Home Fee ($180–$740), a Distance Tier Fee ($45–$260), the sum of each selected item multiplied by its per-unit rate, plus any optional Extra Services you toggle on.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <h3>
+              <button type="button" class="faq-trigger" aria-expanded="false" aria-controls="faq-panel-3" id="faq-btn-3">
+                <span>What if I want to change item counts after viewing the summary?</span>
+                <span class="faq-icon" aria-hidden="true">+</span>
+              </button>
+            </h3>
+            <div class="faq-panel" id="faq-panel-3" role="region" aria-labelledby="faq-btn-3" hidden>
+              <div class="faq-panel__inner">
+                <p>Click “Edit Details” on the summary screen or jump to any step in the progress bar. All of your previously entered home type, distance, items, extras, and contact fields stay intact.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <h3>
+              <button type="button" class="faq-trigger" aria-expanded="false" aria-controls="faq-panel-4" id="faq-btn-4">
+                <span>What is included in Fragile item handling?</span>
+                <span class="faq-icon" aria-hidden="true">+</span>
+              </button>
+            </h3>
+            <div class="faq-panel" id="faq-panel-4" role="region" aria-labelledby="faq-btn-4" hidden>
+              <div class="faq-panel__inner">
+                <p>In our fictional service model, Fragile item handling covers double-walled mirror cartons, foam edge guards, upright television sleeves, and compartmentalized dishware inserts.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <h3>
+              <button type="button" class="faq-trigger" aria-expanded="false" aria-controls="faq-panel-5" id="faq-btn-5">
+                <span>Can I estimate an office move with this tool?</span>
+                <span class="faq-icon" aria-hidden="true">+</span>
+              </button>
+            </h3>
+            <div class="faq-panel" id="faq-panel-5" role="region" aria-labelledby="faq-btn-5" hidden>
+              <div class="faq-panel__inner">
+                <p>You can approximate smaller studio moves by picking a matching square-footage tier and adjusting Box and Table counts, or use the demo Contact form below to test an office enquiry.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <h3>
+              <button type="button" class="faq-trigger" aria-expanded="false" aria-controls="faq-panel-6" id="faq-btn-6">
+                <span>Does the website send my contact information to a server?</span>
+                <span class="faq-icon" aria-hidden="true">+</span>
+              </button>
+            </h3>
+            <div class="faq-panel" id="faq-panel-6" role="region" aria-labelledby="faq-btn-6" hidden>
+              <div class="faq-panel__inner">
+                <p>Never. MOVEMINT runs 100% locally in your browser with HTML5, CSS3, and Vanilla JavaScript. There is no backend, database, or external form submission.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 9. Contact Section (Demo Enquiry Form) -->
+    <section class="section contact-section" id="contact" aria-labelledby="contact-heading">
+      <div class="container contact-grid">
+        <div class="contact-info reveal">
+          <span class="section-tag section-tag--lime">Say Hello (Demo)</span>
+          <h2 id="contact-heading" class="section-title">Have a Move Question?</h2>
+          <p>
+            Test our client-side validated demo enquiry form. Submitting previews your formatted message right in the browser — nothing is transmitted or booked.
+          </p>
+
+          <dl class="studio-details">
+            <div>
+              <dt>Fictional Dispatch Desk</dt>
+              <dd>420 Mintway Avenue, Suite 3B (Fictional)</dd>
+            </div>
+            <div>
+              <dt>Demo Email</dt>
+              <dd>hello@movemint.example</dd>
+            </div>
+            <div>
+              <dt>Concept Hours</dt>
+              <dd>Mon – Sat, 8:00 AM – 6:00 PM</dd>
+            </div>
+          </dl>
+        </div>
+
+        <div class="contact-card reveal">
+          <form id="contactForm" novalidate>
+            <div class="form-grid">
+              <div class="form-field">
+                <label for="contactName">Your name <span class="req" aria-hidden="true">*</span></label>
+                <input type="text" id="contactName" name="contactName" placeholder="Alex Morgan" required aria-describedby="contactNameError">
+                <span class="field-error" id="contactNameError" role="alert"></span>
+              </div>
+
+              <div class="form-field">
+                <label for="contactEmail">Email address <span class="req" aria-hidden="true">*</span></label>
+                <input type="email" id="contactEmail" name="contactEmail" placeholder="alex@example.com" required aria-describedby="contactEmailError">
+                <span class="field-error" id="contactEmailError" role="alert"></span>
+              </div>
+
+              <div class="form-field form-field--full">
+                <label for="contactTopic">Enquiry topic <span class="req" aria-hidden="true">*</span></label>
+                <select id="contactTopic" name="contactTopic" required aria-describedby="contactTopicError">
+                  <option value="">Choose a topic...</option>
+                  <option value="Home relocation question">Home relocation question</option>
+                  <option value="Office move planning">Office move planning</option>
+                  <option value="Packing & fragile care">Packing &amp; fragile care</option>
+                  <option value="Estimator feedback">Estimator feedback</option>
+                </select>
+                <span class="field-error" id="contactTopicError" role="alert"></span>
+              </div>
+
+              <div class="form-field form-field--full">
+                <label for="contactMessage">Message <span class="req" aria-hidden="true">*</span></label>
+                <textarea id="contactMessage" name="contactMessage" rows="4" placeholder="Tell us about your fictional move or ask a question (min 10 characters)..." required aria-describedby="contactMessageError"></textarea>
+                <span class="field-error" id="contactMessageError" role="alert"></span>
+              </div>
+            </div>
+
+            <div class="contact-form-footer">
+              <span class="mono-label">CLIENT-SIDE DEMO ONLY</span>
+              <button type="submit" class="btn btn--lime">Send Demo Enquiry →</button>
+            </div>
+          </form>
+
+          <div class="contact-success" id="contactSuccess" hidden aria-live="polite">
+            <div class="contact-success__badge">DEMO ENQUIRY VALIDATED</div>
+            <h3>Thanks, <span id="contactSuccessName"></span>!</h3>
+            <p>
+              Your demo message on <strong id="contactSuccessTopic"></strong> passed client-side validation. Because MOVEMINT is a static fictional site, no email was sent and no moving service was booked.
+            </p>
+            <button type="button" class="btn btn--ghost btn--sm" id="resetContactBtn">Send Another Demo Note</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <a href="#top" class="brand-logo brand-logo--footer">
+          <img src="assets/icons/movemint-mark.svg" alt="" width="36" height="36" class="brand-logo__mark">
+          <span class="brand-logo__text">MOVE<span>MINT</span></span>
+        </a>
+        <p>
+          Fictional relocation studio &amp; interactive moving cost calculator. Built with HTML5, CSS3, and Vanilla JavaScript.
+        </p>
+      </div>
+
+      <nav aria-label="Footer Navigation" class="footer-nav">
+        <a href="#services">Services</a>
+        <a href="#estimate">Estimate</a>
+        <a href="#process">Process</a>
+        <a href="#faq">FAQ</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <div class="footer-legal">
+        <p><strong>Disclaimer:</strong> Fictional brand concept. All prices and estimates are illustrative only and not binding quotations.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

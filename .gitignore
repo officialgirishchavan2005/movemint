@@ -1,0 +1,16 @@
+﻿# Java & Maven artifacts
+target/
+.mvn/
+mvnw
+mvnw.cmd
+pom.xml
+HELP.md
+data/
+src/
+WorkNest_Presentation/
+WorkNest_UI_Screenshots/
+
+# OS & Temp
+Thumbs.db
+.DS_Store
+*.log

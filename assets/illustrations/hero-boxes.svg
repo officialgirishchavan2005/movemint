@@ -1,0 +1,100 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 480" fill="none">
+  <!-- Background organic blob & subtle arc -->
+  <circle cx="290" cy="245" r="196" fill="#F2EBDD"/>
+  <circle cx="425" cy="122" r="54" fill="#B9F527" opacity="0.85"/>
+  <circle cx="118" cy="340" r="36" fill="#B9F527" opacity="0.45"/>
+
+  <!-- Subtle architectural dashed arc -->
+  <path d="M74 260C74 140 172 48 292 48C412 48 492 130 492 238" stroke="#1A1B18" stroke-width="2" stroke-dasharray="6 8" stroke-linecap="round" opacity="0.35"/>
+
+  <!-- Ground shadow -->
+  <ellipse cx="284" cy="422" rx="194" ry="20" fill="#1A1B18" opacity="0.14"/>
+
+  <!-- Back right tilted tall box -->
+  <g transform="translate(296 196) rotate(4)">
+    <rect x="0" y="0" width="150" height="190" rx="10" fill="#D9A86C" stroke="#1A1B18" stroke-width="3.5"/>
+    <rect x="104" y="0" width="46" height="190" rx="6" fill="#C48F52" stroke="#1A1B18" stroke-width="3.5"/>
+    <!-- Lime tape vertical -->
+    <rect x="42" y="0" width="24" height="58" fill="#B9F527" stroke="#1A1B18" stroke-width="3"/>
+    <!-- Shipping label -->
+    <rect x="18" y="84" width="68" height="44" rx="6" fill="#FFFDF8" stroke="#1A1B18" stroke-width="2.5"/>
+    <line x1="28" y1="98" x2="74" y2="98" stroke="#1A1B18" stroke-width="3" stroke-linecap="round"/>
+    <line x1="28" y1="110" x2="60" y2="110" stroke="#1A1B18" stroke-width="2.5" stroke-linecap="round"/>
+    <!-- Up arrows icon -->
+    <path d="M122 148V126M122 126L116 132M122 126L128 132" stroke="#1A1B18" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M136 148V126M136 126L130 132M136 126L142 132" stroke="#1A1B18" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="114" y1="154" x2="142" y2="154" stroke="#1A1B18" stroke-width="2.5" stroke-linecap="round"/>
+  </g>
+
+  <!-- Large front-left main box -->
+  <g transform="translate(88 228)">
+    <rect x="0" y="0" width="218" height="184" rx="12" fill="#E6BC85" stroke="#1A1B18" stroke-width="3.5"/>
+    <!-- Side depth panel -->
+    <path d="M164 0H206C212.627 0 218 5.37258 218 12V172C218 178.627 212.627 184 206 184H164V0Z" fill="#CE9B5B" stroke="#1A1B18" stroke-width="3.5"/>
+    <!-- Cutout carry handles -->
+    <rect x="179" y="76" width="24" height="10" rx="5" fill="#1A1B18"/>
+    <!-- Top Lime green packing tape strip -->
+    <rect x="66" y="0" width="32" height="54" fill="#B9F527" stroke="#1A1B18" stroke-width="3"/>
+    <path d="M74 14L82 22L90 14" stroke="#1A1B18" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <!-- Stamp -->
+    <g transform="translate(20 26) rotate(-7)">
+      <rect x="0" y="0" width="84" height="28" rx="5" fill="#FFFDF8" stroke="#1A1B18" stroke-width="2.5"/>
+      <text x="42" y="19" text-anchor="middle" font-family="monospace" font-weight="700" font-size="13" fill="#1A1B18" letter-spacing="1.2">FRAGILE</text>
+    </g>
+    <!-- Barcode & Route Tag -->
+    <rect x="24" y="106" width="114" height="54" rx="8" fill="#1A1B18"/>
+    <circle cx="42" cy="133" r="10" fill="#B9F527"/>
+    <path d="M38 133L41 136L46 130" stroke="#1A1B18" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect x="62" y="120" width="62" height="6" rx="3" fill="#FAF6EE"/>
+    <rect x="62" y="133" width="44" height="5" rx="2.5" fill="#FAF6EE" opacity="0.65"/>
+    <rect x="62" y="144" width="54" height="4" rx="2" fill="#B9F527"/>
+  </g>
+
+  <!-- Open top box with Potted Plant, Lamp & Books peeking out -->
+  <g transform="translate(132 108)">
+    <!-- Plant leaves peeking out -->
+    <path d="M56 54C36 32 18 36 14 14C34 10 54 24 62 48" fill="#B9F527" stroke="#1A1B18" stroke-width="3" stroke-linejoin="round"/>
+    <path d="M68 50C66 20 82 4 102 2C104 22 92 42 74 52" fill="#9FE014" stroke="#1A1B18" stroke-width="3" stroke-linejoin="round"/>
+    <path d="M74 56C96 42 118 46 126 28C106 20 86 32 72 52" fill="#B9F527" stroke="#1A1B18" stroke-width="3" stroke-linejoin="round"/>
+    <!-- Lamp shade peeking right -->
+    <path d="M118 54L130 16H164L176 54H118Z" fill="#FFFDF8" stroke="#1A1B18" stroke-width="3" stroke-linejoin="round"/>
+    <rect x="143" y="54" width="8" height="16" fill="#1A1B18"/>
+    <!-- Book spines peeking left -->
+    <rect x="16" y="34" width="22" height="36" rx="3" transform="rotate(-12 16 34)" fill="#1A1B18" stroke="#1A1B18" stroke-width="2.5"/>
+    <rect x="36" y="28" width="18" height="42" rx="3" transform="rotate(-5 36 28)" fill="#FFFDF8" stroke="#1A1B18" stroke-width="2.5"/>
+
+    <!-- Open cardboard flaps -->
+    <path d="M10 66L-16 44L142 44L168 66H10Z" fill="#C48F52" stroke="#1A1B18" stroke-width="3" stroke-linejoin="round"/>
+    <!-- Box body -->
+    <rect x="10" y="64" width="164" height="86" rx="10" fill="#F0CCA0" stroke="#1A1B18" stroke-width="3.5"/>
+    <!-- Front folded-down flaps -->
+    <path d="M10 64L24 94H90L92 64H10Z" fill="#E6BC85" stroke="#1A1B18" stroke-width="3" stroke-linejoin="round"/>
+    <path d="M92 64L94 94H162L174 64H92Z" fill="#DDA96F" stroke="#1A1B18" stroke-width="3" stroke-linejoin="round"/>
+    <!-- Sticker tag on open box -->
+    <rect x="52" y="106" width="80" height="26" rx="13" fill="#B9F527" stroke="#1A1B18" stroke-width="2.5"/>
+    <text x="92" y="123" text-anchor="middle" font-family="sans-serif" font-weight="800" font-size="11" fill="#1A1B18">LIVING RM</text>
+  </g>
+
+  <!-- Floating Lime Tape Roll (top right) -->
+  <g transform="translate(396 86) rotate(14)">
+    <ellipse cx="42" cy="40" rx="34" ry="34" fill="#B9F527" stroke="#1A1B18" stroke-width="3.5"/>
+    <ellipse cx="42" cy="40" rx="15" ry="15" fill="#FAF6EE" stroke="#1A1B18" stroke-width="3"/>
+    <path d="M74 44L104 62L92 78L60 64" fill="#B9F527" stroke="#1A1B18" stroke-width="3" stroke-linejoin="round"/>
+  </g>
+
+  <!-- Floating Mini Box / Crate Badge (bottom right) -->
+  <g transform="translate(392 318) rotate(-6)">
+    <rect x="0" y="0" width="112" height="92" rx="10" fill="#FFFDF8" stroke="#1A1B18" stroke-width="3.5"/>
+    <rect x="0" y="0" width="112" height="24" rx="8" fill="#1A1B18"/>
+    <circle cx="16" cy="12" r="4" fill="#B9F527"/>
+    <circle cx="30" cy="12" r="4" fill="#FAF6EE" opacity="0.5"/>
+    <path d="M26 52H86M26 68H64" stroke="#1A1B18" stroke-width="4" stroke-linecap="round"/>
+    <circle cx="84" cy="68" r="10" fill="#B9F527" stroke="#1A1B18" stroke-width="2.5"/>
+  </g>
+
+  <!-- Energetic motion & sparkle accents -->
+  <path d="M62 152L76 144M54 170L72 170M66 188L80 194" stroke="#1A1B18" stroke-width="3" stroke-linecap="round"/>
+  <path d="M490 218L508 210M496 236L514 238M486 254L502 262" stroke="#1A1B18" stroke-width="3" stroke-linecap="round"/>
+  <path d="M332 62L337 74L349 79L337 84L332 96L327 84L315 79L327 74L332 62Z" fill="#1A1B18"/>
+  <path d="M80 398L84 406L92 410L84 414L80 422L76 414L68 410L76 406L80 398Z" fill="#B9F527" stroke="#1A1B18" stroke-width="2"/>
+</svg>
